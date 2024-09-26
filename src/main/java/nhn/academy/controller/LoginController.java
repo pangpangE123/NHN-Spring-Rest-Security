@@ -1,5 +1,6 @@
 package nhn.academy.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import nhn.academy.model.Member;
 import nhn.academy.model.MemberLoginRequest;
 import nhn.academy.service.MemberService;
@@ -7,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-@RequestMapping("/login")
+//@Controller
+//@RequestMapping("/login")
 public class LoginController {
     private final MemberService memberService;
 
