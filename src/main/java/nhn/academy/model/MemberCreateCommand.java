@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MemberCreateCommand {
     private String id;
+    private String password;
     private String name;
     private Integer age;
     @JsonProperty("class")
@@ -48,5 +49,13 @@ public class MemberCreateCommand {
 
     public Role getRole() {
         return role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

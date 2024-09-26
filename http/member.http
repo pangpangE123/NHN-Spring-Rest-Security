@@ -24,6 +24,7 @@ Accept-Language: en
 
 {
   "id" : "baek",
+  "password" : "baek",
   "name" : "백종원",
   "age" : 50,
   "class" : "A",
