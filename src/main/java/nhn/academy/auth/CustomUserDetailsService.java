@@ -17,6 +17,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return new User("admin", passwordEncoder.encode("admin"), Arrays.asList(new SimpleGrantedAuthority("admin")));
+        User user = new User("admin", passwordEncoder.encode("admin"), Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")));
+
+        return user;
     }
 }
