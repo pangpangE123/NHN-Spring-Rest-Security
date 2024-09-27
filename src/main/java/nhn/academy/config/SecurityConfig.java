@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,15 +20,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+
+        http.csrf(AbstractHttpConfigurer::disable);
+        http.formLogin((formLogin) ->
+                formLogin.loginPage("/auth/login")
+                        .usernameParameter("id")
+                        .passwordParameter("pwd")
+                        .loginProcessingUrl("/auth/login/process")
+
+        );
         http.authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests.requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/private-project/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER")
                         .requestMatchers("/public-project/**").permitAll()
+                        .requestMatchers("/auth/login/**").permitAll()
                         .anyRequest().authenticated()
         );
 
-        // login
-        http.formLogin(Customizer.withDefaults());
         return http.build();
     }
 
