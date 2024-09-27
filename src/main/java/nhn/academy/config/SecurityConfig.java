@@ -29,8 +29,7 @@ public class SecurityConfig {
                         .passwordParameter("pwd")
                         .loginProcessingUrl("/auth/login/process")
 
-        );
-        http.authorizeHttpRequests(authorizeRequests ->
+        ).authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests.requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/private-project/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER")
                         .requestMatchers("/public-project/**").permitAll()
