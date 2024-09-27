@@ -16,7 +16,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
+                authorizeRequests.requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/private-project/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_MEMBER")
+                        .requestMatchers("/public-project/**").permitAll()
                         .anyRequest().authenticated()
         );
 
@@ -32,7 +34,13 @@ public class SecurityConfig {
                 .password("admin")
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(admin);
+
+        UserDetails member = User.withDefaultPasswordEncoder()
+                .username("member")
+                .password("member")
+                .roles("MEMBER")
+                .build();
+        return new InMemoryUserDetailsManager(admin, member);
     }
 
 }

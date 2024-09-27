@@ -15,5 +15,5 @@ public class HomeController {
         home.addObject("loginName", userDetails.getUsername());
         return home;
     }
-    
+
 }
