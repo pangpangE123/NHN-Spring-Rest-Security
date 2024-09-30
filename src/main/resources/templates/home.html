@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
     <title>Home</title>
@@ -14,5 +14,19 @@ Welcome, <span th:text="${loginName}" /><br />
 <br>
 <a href="/logout">Logout</a>
 <br>
+
+
+<div sec:authorize="hasRole('MEMBER')">
+    member!!
+</div>
+
+<div sec:authorize="hasRole('ADMIN')">
+    admin!!!
+</div>
+
+<div sec:authorize="hasRole('ADMIN') or hasRole('MEMBER')">
+    member or admin
+</div>
+
 </body>
 </html>
