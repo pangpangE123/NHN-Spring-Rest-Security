@@ -3,7 +3,7 @@ package nhn.academy.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 public class Member {
@@ -63,5 +63,10 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        //TODO 필요한 경우만 할 수 있도록.. 이미 인코딩 된 패스워드는 인코드하지않아도됨.
+//        setPassword(passwordEncoder.encode(password));
     }
 }
