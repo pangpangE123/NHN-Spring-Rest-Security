@@ -5,11 +5,15 @@ import nhn.academy.model.Member;
 import nhn.academy.model.MemberCreateCommand;
 import nhn.academy.model.Requester;
 import nhn.academy.model.annotation.Auth;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class MemberController {
@@ -28,5 +32,12 @@ public class MemberController {
                                     @Auth Requester requester){
         System.out.println(memberCreateCommand);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/members")
+    public List<Member> getMembers(Pageable pageable){
+        System.out.println(pageable.getPageNumber());
+        System.out.println(pageable.getPageSize());
+        return Arrays.asList(new Member("신건영", 20, ClassType.A));
     }
 }
