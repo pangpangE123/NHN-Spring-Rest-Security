@@ -3,6 +3,7 @@ package nhn.academy.controller;
 import nhn.academy.model.ClassType;
 import nhn.academy.model.Member;
 import nhn.academy.model.MemberCreateCommand;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class MemberController {
         return "신건영";
     }
 
-    @GetMapping("/me")
+    @GetMapping(value = "/me")
     public Member getMe(){
         return new Member("신건영", 20, ClassType.A);
     }

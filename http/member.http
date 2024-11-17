@@ -6,6 +6,10 @@ GET localhost:8080/me
 GET localhost:8080/me
 Accept: application/xml
 
+### 멤버조회
+GET localhost:8080/me
+Accept: text/csv
+
 ### 멤버생성
 POST localhost:8080/members
 Content-Type: application/json
