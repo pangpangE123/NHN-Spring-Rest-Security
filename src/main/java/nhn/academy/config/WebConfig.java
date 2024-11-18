@@ -26,7 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(new CsvMemberMessageConverter());
+        converters.add(new CsvHttpMessageConverter());
     }
 
 }
