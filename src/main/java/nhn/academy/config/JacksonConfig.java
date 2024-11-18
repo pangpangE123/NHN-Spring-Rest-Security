@@ -1,2 +1,6 @@
-package nhn.academy.config;public class JacksonConfig {
+package nhn.academy.config;
+
+public class JacksonConfig {
+
+
 }

@@ -8,15 +8,18 @@ public class Member {
     private String name;
     @JsonSerialize(using = ToStringSerializer.class)
     private Integer age;
+
+    private String role;
+
     @JsonSerialize(using = ToStringSerializer.class)
     @JsonProperty("class")
     private ClassType clazz;
 
-    public Member(String name, Integer age, ClassType clazz) {
+    public Member(String name, Integer age, String role ,ClassType clazz) {
         this.name = name;
         this.age = age;
         this.clazz = clazz;
-
+        this.role = role;
     }
 
     public String getName() {
@@ -26,6 +29,8 @@ public class Member {
     public Integer getAge() {
         return age;
     }
+
+    public String getRole(){return role;}
 
     public ClassType getClazz() {
         return clazz;

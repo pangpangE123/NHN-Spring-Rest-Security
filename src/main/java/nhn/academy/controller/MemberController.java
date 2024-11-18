@@ -18,7 +18,7 @@ public class MemberController {
 
     @GetMapping("/me")
     public Member getMe(){
-        return new Member("신건영", 20, ClassType.A);
+        return new Member("신건영", 10, "admin",ClassType.A);
     }
 
     @PostMapping("/members")
