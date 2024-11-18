@@ -2,6 +2,7 @@ package nhn.academy.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
@@ -11,6 +12,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        System.out.println(converters);
+
+        // TODO 1. MappingJackson2HttpMessageConverter 등록
+        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        converters.add(converter);
     }
 }
