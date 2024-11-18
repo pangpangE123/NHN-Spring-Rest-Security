@@ -2,9 +2,18 @@
 GET localhost:8080/me
 
 
-### 멤버조회
+
+### 멤버조회 (json)
+GET localhost:8080/me
+Accept: application/json
+
+### 멤버조회 (xml)
 GET localhost:8080/me
 Accept: application/xml
+
+### 멤버조회 (csv)
+GET localhost:8080/me
+Accept: text/csv
 
 ### 멤버생성
 POST localhost:8080/members
